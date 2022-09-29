@@ -1,9 +1,9 @@
 
 
 #----------------------------------------------------------
-# ACS730 - Week 3 - Terraform Introduction
+# CLO835 - Assignment1
 #
-# Build EC2 Instances
+# Build EC2 Instances and ECR
 #
 #----------------------------------------------------------
 
