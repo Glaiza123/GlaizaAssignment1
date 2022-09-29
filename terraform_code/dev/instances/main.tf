@@ -22,7 +22,6 @@ data "aws_ami" "latest_amazon_linux" {
   }
 }
 
-
 # Data source for availability zones in us-east-1
 data "aws_availability_zones" "available" {
   state = "available"
@@ -85,8 +84,6 @@ resource "aws_security_group" "my_sg" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  
-
   ingress {
     description      = "HTTP from everywhere"
     from_port        = 8080
@@ -122,8 +119,6 @@ resource "aws_eip" "static_eip" {
     }
   )
 }
-
-  
 
 #ECR
   resource "aws_ecr_repository" "foo" {
