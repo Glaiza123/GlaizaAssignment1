@@ -71,8 +71,8 @@ resource "aws_key_pair" "my_key" {
 
 # Security Group
 resource "aws_security_group" "my_sg" {
-  name        = "allow_ssh_HTTP"
-  description = "Allow SSH AND HTTP inbound traffic"
+  name        = "assignment1_sg"
+  description = "Allow SSH and HTTP inbound traffic"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
@@ -86,8 +86,26 @@ resource "aws_security_group" "my_sg" {
 
   ingress {
     description      = "HTTP from everywhere"
-    from_port        = 8080
-    to_port          = 8080
+    from_port        = 0
+    to_port          = 8081
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  
+  ingress {
+    description      = "HTTP from everywhere"
+    from_port        = 0
+    to_port          = 8082
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  
+  ingress {
+    description      = "HTTP from everywhere"
+    from_port        = 0
+    to_port          = 8083
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
@@ -122,7 +140,7 @@ resource "aws_eip" "static_eip" {
 
 #ECR
   resource "aws_ecr_repository" "foo" {
-  name = "glaiza"
+  name = "glaiza_ecr"
   image_tag_mutability = "MUTABLE"
   image_scanning_configuration {
     scan_on_push = true
